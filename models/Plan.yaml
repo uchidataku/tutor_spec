@@ -1,0 +1,30 @@
+title: Plan
+type: object
+properties:
+  id:
+    type: string
+  title:
+    type: string
+  summary:
+    type: string
+  content:
+    type: string
+  price:
+    type: string
+  classification:
+    type: string
+    enum:
+      - junior_high_school
+      - high_school
+      - other
+  status:
+    type: string
+    enum:
+      - draft
+      - public
+      - private
+required:
+  - id
+  - title
+  - classification
+  - status

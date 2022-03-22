@@ -1,0 +1,374 @@
+openapi: 3.0.0
+info:
+  title: Application
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000/v1'
+    description: local
+  - url: 'https://api-tutor.com/v1'
+    description: Prd
+  - description: Stg
+    url: 'https://stg.api-tutor.com/v1'
+  - url: 'https://dev.api-tutor.com/v1'
+    description: Dev
+paths:
+  '/accounts/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Accountを取得する
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Account.v1.yaml
+      operationId: get-accounts-id
+    patch:
+      summary: Accountを更新する
+      operationId: patch-accounts-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Account.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    current_password:
+                      type: string
+                    new_password:
+                      type: string
+                    new_password_confirmation:
+                      type: string
+              required:
+                - account
+        description: ''
+    delete:
+      summary: Accountを削除する
+      operationId: delete-accounts-id
+      responses:
+        '204':
+          description: No Content
+  '/accounts/{account_id}/student':
+    parameters:
+      - schema:
+          type: string
+        name: account_id
+        in: path
+        required: true
+    get:
+      summary: Studentを取得する
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Student.v1.yaml
+      operationId: get-accounts-id-student
+    post:
+      summary: Studentを作成する
+      operationId: post-accounts-id-student
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Student.v1.yaml
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                student:
+                  type: object
+                  required:
+                    - username
+                    - birthday
+                    - current_classification
+                    - current_school_year
+                  properties:
+                    username:
+                      type: string
+                    birthday:
+                      type: string
+                      format: date
+                    introduction:
+                      type: string
+                    junior_high_school_name:
+                      type: string
+                    high_school_name:
+                      type: string
+                    technical_school_name:
+                      type: string
+                    current_classification:
+                      type: string
+                      enum:
+                        - junior_high_school
+                        - high_school
+                    current_school_year:
+                      type: integer
+                    avatar:
+                      type: string
+              required:
+                - student
+    patch:
+      summary: Studentを更新する
+      operationId: patch-accounts-id-student
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Student.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                student:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                    birthday:
+                      type: string
+                      format: date
+                    introduction:
+                      type: string
+                    junior_high_school_name:
+                      type: string
+                    high_school_name:
+                      type: string
+                    technical_school_name:
+                      type: string
+                    current_classification:
+                      type: string
+                      enum:
+                        - junior_high_school
+                        - high_school
+                    current_school_year:
+                      type: integer
+                    avatar:
+                      type: string
+              required:
+                - student
+  '/accounts/{account_id}/tutor':
+    parameters:
+      - schema:
+          type: string
+        name: account_id
+        in: path
+        required: true
+    get:
+      summary: Tutorを取得する
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Tutor.v1.yaml
+      operationId: get-accounts-id-tutor
+    post:
+      summary: Tutorを作成する
+      operationId: post-accounts-id-tutor
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Tutor.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tutor:
+                  type: object
+                  required:
+                    - first_name
+                    - last_name
+                    - first_name_kana
+                    - last_name_kana
+                    - username
+                    - birthday
+                    - phone
+                    - address
+                  properties:
+                    first_name:
+                      type: string
+                    last_name:
+                      type: string
+                    first_name_kana:
+                      type: string
+                    last_name_kana:
+                      type: string
+                    username:
+                      type: string
+                    birthday:
+                      type: string
+                      format: date
+                    introduction:
+                      type: string
+                    phone:
+                      type: string
+                    address:
+                      type: string
+                    avatar:
+                      type: string
+              required:
+                - account
+        description: ''
+    patch:
+      summary: Tutorを更新する
+      operationId: patch-accounts-id-tutor
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Tutor.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tutor:
+                  type: object
+                  properties:
+                    first_name:
+                      type: string
+                    last_name:
+                      type: string
+                    first_name_kana:
+                      type: string
+                    last_name_kana:
+                      type: string
+                    username:
+                      type: string
+                    birthday:
+                      type: string
+                      format: date
+                    introduction:
+                      type: string
+                    phone:
+                      type: string
+                    address:
+                      type: string
+                    avatar:
+                      type: string
+  '/accounts/{account_id}/tutor/academic_histories':
+    parameters:
+      - schema:
+          type: string
+        name: account_id
+        in: path
+        required: true
+    get:
+      summary: Tutorの学歴一覧を取得する
+      tags: []
+      responses: {}
+      operationId: get-accounts-account_id-tutor-academic_histories
+    post:
+      summary: Tutorの学歴を作成する
+      operationId: post-accounts-account_id-tutor-academic_histories
+      responses:
+        '200':
+          description: OK
+  '/accounts/{account_id}/tutor/work_histories':
+    parameters:
+      - schema:
+          type: string
+        name: account_id
+        in: path
+        required: true
+    get:
+      summary: Tutorの職歴一覧を取得する
+      tags: []
+      responses: {}
+      operationId: get-accounts-account_id-tutor-work_histories
+    post:
+      summary: Tutorの職歴を作成する
+      operationId: post-accounts-account_id-tutor-work_histories
+      responses:
+        '200':
+          description: OK
+  '/academic_histories/{id}':
+    get:
+      summary: 学歴を取得する
+      tags: []
+      responses: {}
+      operationId: get-academic_histories-id
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    patch:
+      summary: 学歴を更新する
+      operationId: patch-academic_histories-id
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: 学歴を削除する
+      operationId: delete-academic_histories-id
+      responses:
+        '200':
+          description: OK
+  '/work_histories/{id}':
+    get:
+      summary: 職歴を取得する
+      tags: []
+      responses: {}
+      operationId: get-work_histories-id
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    patch:
+      summary: 職歴を更新する
+      operationId: patch-work_histories-id
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: 職歴を削除する
+      operationId: delete-work_histories-id
+      responses:
+        '200':
+          description: OK
+components:
+  schemas: {}

@@ -1,0 +1,17 @@
+title: Subject
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  classification:
+    type: string
+    enum:
+      - junior_high_school
+      - high_school
+required:
+  - id
+  - name
+  - classification
+description: ''

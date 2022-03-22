@@ -1,0 +1,32 @@
+title: AcademicHistory
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  faculty:
+    type: string
+  since_date:
+    type: string
+  until_date:
+    type: string
+  classification:
+    type: string
+    enum:
+      - university
+      - graduate_school
+      - technical_college
+      - vocational_school
+      - junior_college
+      - high_school
+      - junior_high_school
+  is_attended:
+    type: boolean
+    description: 在籍中か
+required:
+  - id
+  - name
+  - since_date
+  - classification
+  - is_attended

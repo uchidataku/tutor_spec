@@ -1,0 +1,18 @@
+title: SchoolOfChoice
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  faculty:
+    type: string
+  classification:
+    type: string
+    enum:
+      - high_school
+      - university
+required:
+  - id
+  - name
+  - classification

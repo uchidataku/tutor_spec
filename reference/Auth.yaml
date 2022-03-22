@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  title: Auth
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000/auth/v1'
+    description: local
+  - url: 'https://api-tutor.com/auth/v1'
+    description: Prd
+  - url: 'https://stg.api-tutor.com/auth/v1'
+    description: Stg
+  - url: 'https://dev.api-tutor.com/auth/v1'
+    description: Dev
+paths:
+  /sign_in:
+    post:
+      summary: サインインする
+      operationId: post-sign_in
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    $ref: ../models/Account.v1.yaml
+                  token:
+                    type: string
+                required:
+                  - account
+                  - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account:
+                  type: object
+                  required:
+                    - email
+                    - password
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+              required:
+                - account
+  /sign_up:
+    post:
+      summary: サインアップする
+      operationId: post-sign_up
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    $ref: ../models/Account.v1.yaml
+                  token:
+                    type: string
+                required:
+                  - account
+                  - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account:
+                  type: object
+                  required:
+                    - email
+                    - password
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+              required:
+                - account
+  /verify_email:
+    get:
+      summary: アドレス確認する
+      tags: []
+      responses:
+        '302':
+          description: Found
+      operationId: get-verify_email
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: token
+  /verify_new_email:
+    post:
+      summary: 新しいアドレス確認する
+      operationId: post-verify_new_email
+      responses:
+        '302':
+          description: Found
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: token
+        - schema:
+            type: string
+          in: query
+          name: email
+components:
+  schemas: {}

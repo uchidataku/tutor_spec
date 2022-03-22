@@ -1,0 +1,51 @@
+title: Parent
+type: object
+properties:
+  id:
+    type: string
+  email:
+    type: string
+  password:
+    type: string
+  email_verification_status:
+    type: string
+    enum:
+      - unspecified
+      - verified
+  first_name:
+    type: string
+  last_name:
+    type: string
+  first_name_kana:
+    type: string
+  last_name_kana:
+    type: string
+  birthday:
+    type: string
+    format: date
+  phone:
+    type: string
+  address:
+    type: string
+  identity_verification_status:
+    type: string
+    enum:
+      - unspecified
+      - verfied
+      - checking
+      - pending
+      - requiring
+      - failed
+required:
+  - id
+  - email
+  - password
+  - email_verification_status
+  - first_name
+  - last_name
+  - first_name_kana
+  - last_name_kana
+  - birthday
+  - phone
+  - address
+  - identity_verification_status

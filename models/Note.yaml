@@ -1,0 +1,18 @@
+title: Note
+type: object
+properties:
+  id:
+    type: string
+  title:
+    type: string
+  content:
+    type: string
+  status:
+    type: string
+    enum:
+      - draft
+      - public
+required:
+  - id
+  - title
+  - status

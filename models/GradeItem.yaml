@@ -1,0 +1,16 @@
+title: GradeItem
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  score:
+    type: string
+  grade:
+    $ref: ./Grade.yaml
+required:
+  - id
+  - name
+  - score
+  - grade

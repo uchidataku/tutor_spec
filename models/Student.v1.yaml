@@ -1,0 +1,34 @@
+title: Student
+type: object
+properties:
+  id:
+    type: string
+  username:
+    type: string
+  birthday:
+    type: string
+    format: date
+  introduction:
+    type: string
+  junior_high_school_name:
+    type: string
+  high_school_name:
+    type: string
+  technical_school_name:
+    type: string
+  current_classification:
+    type: string
+    enum:
+      - junior_high_school
+      - high_school
+      - technical_school
+  current_school_year:
+    type: integer
+  avatar:
+    type: string
+required:
+  - id
+  - username
+  - birthday
+  - current_classification
+  - current_school_year

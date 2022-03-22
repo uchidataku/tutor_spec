@@ -1,0 +1,22 @@
+title: Examination
+type: object
+properties:
+  id:
+    type: string
+  school_year:
+    type: string
+  semester:
+    type: string
+  examination_name:
+    type: string
+  classification:
+    type: string
+    enum:
+      - junior_high_school
+      - high_school
+required:
+  - id
+  - school_year
+  - semester
+  - examination_name
+  - classification

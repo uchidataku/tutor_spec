@@ -1,0 +1,18 @@
+title: ExaminationItem
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  score:
+    type: string
+  average_score:
+    type: string
+  examination:
+    $ref: ./Examination.yaml
+required:
+  - id
+  - name
+  - score
+  - examination

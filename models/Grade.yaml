@@ -1,0 +1,18 @@
+title: Grade
+type: object
+properties:
+  id:
+    type: string
+  school_year:
+    type: string
+  semester:
+    type: string
+  classification:
+    type: string
+    enum:
+      - junior_high_school
+      - high_school
+required:
+  - id
+  - school_year
+  - semester

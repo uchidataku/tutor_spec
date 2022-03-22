@@ -1,0 +1,36 @@
+title: Tutor
+type: object
+properties:
+  id:
+    type: string
+  first_name:
+    type: string
+  last_name:
+    type: string
+  first_name_kana:
+    type: string
+  last_name_kana:
+    type: string
+  username:
+    type: string
+  birthday:
+    type: string
+    format: date
+  introduction:
+    type: string
+  phone:
+    type: string
+  address:
+    type: string
+  avatar:
+    type: string
+required:
+  - id
+  - first_name
+  - last_name
+  - first_name_kana
+  - last_name_kana
+  - username
+  - birthday
+  - phone
+  - address

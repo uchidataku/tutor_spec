@@ -1,0 +1,20 @@
+title: WorkHistory
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  since_date:
+    type: string
+  until_date:
+    type: string
+  job_summary:
+    type: string
+  is_employed:
+    type: boolean
+required:
+  - id
+  - name
+  - since_date
+  - is_employed
